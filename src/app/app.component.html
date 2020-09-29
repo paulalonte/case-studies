@@ -1,0 +1,24 @@
+<header>
+  <div class="container nav-heading">
+    <h1>RPA</h1>
+
+    <nav>
+      <ul>
+        <li *ngFor="let route of routeConfig; let i = index" 
+          [routerLink]="[route.path]" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a>{{route.display}}</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<app-modal></app-modal>

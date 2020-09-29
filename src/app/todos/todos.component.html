@@ -1,0 +1,50 @@
+<app-page-header [pageHeader]="pageHeader"></app-page-header>
+
+<div class="page-container">
+    <div class="todo-nav">
+        <div>
+            <input type="text" class="input-add-todo" [(ngModel)]="todoModel"(keydown.enter)="onAddTodoItem()">
+            <button type="button" class="button-primary" (click)="onAddTodoItem()" [disabled]="todoModel === '' || todoModel === undefined">Add</button>
+        </div>
+        <select (change)="onFilterChange($event.target.value)" [disabled]="disableSelect()">
+            <option disabled>Filter List</option>
+            <option value="0">Active</option>
+            <option value="1">Completed</option>
+            <option value="2" selected>All</option>
+        </select>
+
+    </div>
+
+    <div class="list-container">
+        <ul class="list">
+            <div cdkDropList [class.todo-list]="todoList.length" (cdkDropListDropped)="drop($event)">
+                <!-- <div class="todo-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div> -->
+                <li *ngFor="let todo of todoList" class="todo-box" cdkDrag>
+                    <div class="display-flex align-items-center checkbox-name-container">
+                        <input type="checkbox" id="{{todo.id}}" [checked]="todo.isComplete" (change)="onCheckChange($event.target)">
+                    <!-- <label for="{{todo.id}}">{{ todo.name }}</label> -->
+                    <input type="text" class="todo-input-label" [disabled]="!todo.isEditName" value="{{todo.name}}" (change)="onInputTodoChange($event.target.value)">
+                    </div>
+                    <div>
+                        <button type="button" class="button-secondary" (click)="onEditTodo(todo)">{{ todo.isEditName ? 'Update' : 'Edit'}}</button>
+                        <button type="button" class="button-tertiary delete-button" (click)="onDeleteTodo(todo)">Delete</button>
+                    </div>
+                </li>
+            </div>
+            
+        </ul>
+        <h4 *ngIf="!todoList.length">{{ resultMessage }}</h4>
+    </div>
+
+    <button class="button-primary" (click)="onCheckAllTodos()" *ngIf="todoList.length > 1">{{ checkAllText }}</button>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+
+<!-- 
+<div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
+    <div class="todo-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+</div> -->
+
+
+

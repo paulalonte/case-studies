@@ -1,0 +1,66 @@
+@import 'app/scss/variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin: 0 8vw;
+}
+
+.page {
+    padding-top: 40px;
+    // border: 1px solid red;
+}
+
+button {
+    padding: 8px 15px;
+    border: 0;
+    cursor: pointer;
+    transition: background $hover-duration ease;
+}
+
+.button-primary {
+    background: $primary-color;
+    color: white;
+    
+    &:hover {
+        background: lighten($primary-color, 10%);
+    }
+}
+
+.button-secondary {
+    background: $secondary-color;
+    color: white;
+    &:hover {
+        background: lighten($secondary-color, 10%);
+    }
+}
+
+.button-tertiary {
+    background: $tertiary-color;
+    color: white;
+    &:hover {
+        background: lighten($tertiary-color, 10%);
+    }
+}
+
+.display-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

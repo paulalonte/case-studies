@@ -1,0 +1,33 @@
+.modal-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-container {
+        background: #fff;
+        padding: 5vw;
+    }
+
+    .modal-body {
+        h4 {
+            font-weight: 400;
+        }
+        
+    }
+
+    .modal-footer {
+        margin-top: 20px;
+        text-align: right;
+
+        button:last-child {
+            margin-left: 5px;
+        }
+    }
+}
+
