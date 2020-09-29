@@ -2,9 +2,9 @@
 
 <div class="page-container">
     <div class="todo-nav">
-        <div>
-            <input type="text" class="input-add-todo" [(ngModel)]="todoModel"(keydown.enter)="onAddTodoItem()">
-            <button type="button" class="button-primary" (click)="onAddTodoItem()" [disabled]="todoModel === '' || todoModel === undefined">Add</button>
+        <div class="add-list-container">
+            <input type="text" maxLength="60" class="input-add-todo" [(ngModel)]="todoModel"(keydown.enter)="onAddTodoItem()">
+            <button type="button" class="button-primary" (click)="onAddTodoItem()" [disabled]="todoModel === '' || todoModel === undefined">Add Task</button>
         </div>
         <select (change)="onFilterChange($event.target.value)" [disabled]="disableSelect()">
             <option disabled>Filter List</option>
@@ -23,9 +23,9 @@
                     <div class="display-flex align-items-center checkbox-name-container">
                         <input type="checkbox" id="{{todo.id}}" [checked]="todo.isComplete" (change)="onCheckChange($event.target)">
                     <!-- <label for="{{todo.id}}">{{ todo.name }}</label> -->
-                    <input type="text" class="todo-input-label" [disabled]="!todo.isEditName" value="{{todo.name}}" (change)="onInputTodoChange($event.target.value)">
+                    <input type="text" [autofocus]="todo.isEditName" class="todo-input-label" [disabled]="!todo.isEditName" value="{{todo.name}}" (change)="onInputTodoChange($event.target.value)">
                     </div>
-                    <div>
+                    <div class="todo-action-bar">
                         <button type="button" class="button-secondary" (click)="onEditTodo(todo)">{{ todo.isEditName ? 'Update' : 'Edit'}}</button>
                         <button type="button" class="button-tertiary delete-button" (click)="onDeleteTodo(todo)">Delete</button>
                     </div>

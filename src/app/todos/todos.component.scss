@@ -1,3 +1,6 @@
+@import '../scss/mixins';
+@import '../scss/variables';
+
 .todo-nav {
     display: flex;
     justify-content: space-between;
@@ -34,6 +37,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 15px 30px;
+
+        .todo-action-bar {
+            display: initial;
+        }
 
         .todo-input-label {
             display: block; 
@@ -111,5 +118,47 @@
   
   .todo-list.cdk-drop-list-dragging .todo-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  @include mobile-only {
+      .list {
+        .checkbox-name-container {
+            margin-bottom: 10px;
+        }
+
+        li {
+            display: block;
+
+            .todo-input-label {
+                font-size: 1.5em;
+            }
+        }
+
+          .todo-action-bar {
+              display: flex !important;
+
+              button {
+                  flex-grow: 1;
+              }
+          }
+
+          
+      }
+
+      .todo-nav {
+          display: block;
+
+          .add-list-container {
+            display: flex;
+
+            input {
+                flex-grow: 2;
+            }
+          }
+
+          select {
+              margin-top: 20px;
+          }
+      }
   }
   

@@ -1,0 +1,85 @@
+@import '../scss/variables';
+@import '../scss/mixins';
+
+.nav-heading {
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .show-nav {
+        display: block;
+    }
+    
+    .hide-nav {
+        display: none;
+    }
+
+    nav {
+        display: block;
+
+        ul {
+            list-style-type: none;
+            display: flex;
+
+            li {
+                padding: 14px 10px;
+                cursor: pointer;
+                transition: background 0.6s ease;
+
+                a {
+                    display: block;
+                    width: inherit;
+                    height: inherit;
+                    font-weight: 100;
+                    
+                }
+
+                &:hover {
+                    background: $primary-color;
+                }
+            }
+        }
+    }
+}   
+
+.nav-bars {
+    font-size: 1.6em;
+    cursor: pointer;
+    display: none;
+}
+
+.active {
+    background: $primary-color !important;
+}
+
+@include desktop-only {
+    
+}
+
+@include mobile-only {
+    .nav-heading nav {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        background: darken($tertiary-color, 10%);
+        width: 100%;
+        text-align: center;
+        z-index: 10;
+
+        ul {
+            display: block !important;
+        }
+    }
+
+    .nav-bars {
+        display: block;
+    }   
+}
+
+
+
+
+
+

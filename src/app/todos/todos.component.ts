@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ModalService } from '../shared/modal/modal.service';
 import { ITodo } from './todo';
@@ -13,7 +12,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class TodosComponent implements OnInit, OnDestroy {
 
-  public pageHeader = 'Todo List Page';
+  public pageHeader = 'Tasks List';
   public todoList: ITodo[] = [];
   public todoModel: string;
   public filterValue: number;
@@ -31,14 +30,13 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   constructor(private todoService: TodoService,
               private modalService: ModalService,
-              private router: Router,
-              private activeRoute: ActivatedRoute) { }
+              ) { }
 
   ngOnInit() {
     this.todoSubscription = this.todoService.getTodoListSubject$().subscribe(data => {
       this.todoList = data;
       this.setResultMessage();
-      // console.log(this.todoList);
+      console.log(this.todoList);
     });
 
     this.todoService.filterTodo(TodoView.ALL);

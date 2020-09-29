@@ -7,24 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'routing-app';
-
-  public routeConfig = [
-    {
-      path: '',
-      display: 'Home'
-    },
-    {
-      path: '/todos',
-      display: 'Todo'
-    },
-    {
-      path: '/users',
-      display: 'Users'
-    },
-    {
-      path: '/inventory',
-      display: 'Inventory'
-    }
-  ];
 }
 

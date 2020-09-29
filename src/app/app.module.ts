@@ -13,6 +13,7 @@ import { PageHeaderComponent } from './shared/page-header/page-header.component'
 import { ModalComponent } from './shared/modal/modal.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UsersComponent,
     PageHeaderComponent,
     ModalComponent,
-    InventoryComponent
+    InventoryComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

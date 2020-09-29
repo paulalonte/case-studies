@@ -1,0 +1,20 @@
+<div class="container nav-heading">
+    <h1>RPA</h1>
+    
+    <!-- [ngStyle]="(showHideNavObs$ | async) ? showNav() : hideNav()" -->
+    <nav [ngClass]="{ 'show-nav' : (showHideNavObs$ | async)}">
+      <ul>
+        <li *ngFor="let route of routeConfig; let i = index" 
+          [routerLink]="[route.path]" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="onNavItemClick()"
+        >
+          <a>{{route.display}}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <i class="fa fa-bars nav-bars" (click)="onNavBarClick()"></i>
+
+  </div>
