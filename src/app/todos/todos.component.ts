@@ -36,7 +36,16 @@ export class TodosComponent implements OnInit, OnDestroy {
     this.todoSubscription = this.todoService.getTodoListSubject$().subscribe(data => {
       this.todoList = data;
       this.setResultMessage();
-      console.log(this.todoList);
+      // console.log(this.todoList);
+
+      const totalFiltered = this.todoList.filter(item => item.isComplete);
+      if (this.todoList.length) {
+        console.log('there is laman');
+        if (totalFiltered.length === this.todoList.length) {
+          this.isCheckAll = true;
+          this.checkAllText = 'Uncheck All';
+        }
+      }
     });
 
     this.todoService.filterTodo(TodoView.ALL);
