@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ROUTECONFIG } from './navigation';
 
 @Component({
   selector: 'app-navigation',
@@ -12,24 +13,7 @@ export class NavigationComponent implements OnInit {
   public showHideNavigation = new Subject<boolean>();
   public showHideNavObs$ = this.showHideNavigation.asObservable();
 
-  public routeConfig = [
-    {
-      path: '',
-      display: 'Home'
-    },
-    {
-      path: '/tasks',
-      display: 'Tasks'
-    },
-    {
-      path: '/users',
-      display: 'Users'
-    },
-    {
-      path: '/inventory',
-      display: 'Inventory'
-    }
-  ];
+  public routeConfig = ROUTECONFIG;
 
   constructor() { }
 

@@ -1,1 +1,52 @@
 <app-page-header [pageHeader]="pageHeader"></app-page-header>
+
+<div class="page-container">
+    <div class="user-nav">
+        <div class="add-list-container">
+            <button type="button" class="button-primary" (click)="onAddUser()">Add User</button>
+        </div>
+        <select (change)="onFilterChange($event.target.value)" [disabled]="disableSelect()">
+            <option disabled>Filter List</option>
+            <option value="0">With Tasks</option>
+            <option value="1">Without Tasks</option>
+            <option value="2" selected>All</option>
+        </select>
+    </div>
+</div>
+
+<div class="user-list">
+    <ul>
+        <li>First Name</li>
+        <li>Last Name</li>
+        <li>Has Task</li>
+        <li>Action</li>
+    </ul>
+    <ul *ngFor="let user of usersList">
+        <li>{{user.firstname}}</li>
+        <li>{{user.lastname}}</li>
+        <li>{{user.hasTask}}</li>
+        <li>
+            <button type="button" class="button-secondary" (click)="onDeleteUser(user)">Delete</button>
+        </li>
+    </ul>
+
+</div>
+
+<ng-container *ngIf="isAddUser">
+    <div class="form-container">
+        <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+            <div>
+                <label for="fname">First name</label>
+                <input id="fname" type="text" formControlName="firstname" #firstNameInput>
+            </div>
+            <div>
+                <label for="lname">Last name</label>
+                <input id="lname" type="text" formControlName="lastname">
+            </div>
+            <div class="user-action-nav">
+                <button type="button" class="button-secondary" (click)="onCancelForm()">Cancel</button>
+                <button type="submit" class="button-primary" [disabled]="formGroup.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</ng-container>

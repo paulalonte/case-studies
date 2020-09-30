@@ -1,3 +1,4 @@
+import { convertToCapital } from './../utilities/utils';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { ITodo } from './todo';
@@ -21,10 +22,11 @@ export class TodoService {
     // }
 
     addTodo(val: string) {
-        const convertToCapital = val.charAt(0).toUpperCase() + val.substr(1, val.length);
+        // const convertToCapital = val.charAt(0).toUpperCase() + val.substr(1, val.length);
+        const capitalizedName = convertToCapital(val);
         const todo: ITodo = {
             id: String(this.idCountGenerator++),
-            name: convertToCapital,
+            name: capitalizedName,
             isComplete: false,
             isEditName: false
         };
@@ -101,7 +103,7 @@ export class TodoService {
             }
         });
 
-        this.todoList.next(TodoList);
+        // this.todoList.next(TodoList);
     }
 }
 
