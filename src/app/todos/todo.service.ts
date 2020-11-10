@@ -13,6 +13,10 @@ export class TodoService {
     private currentView: number;
     private idCountGenerator = 0;
 
+    constructor() {
+        console.log('todo service call');
+    }
+
     getTodoListSubject$(): Observable<ITodo[]> {
         return this.todoList.asObservable();
     }
@@ -36,8 +40,6 @@ export class TodoService {
     }
 
     editTodo(val: ITodo) {
-        console.log('edit');
-        console.log(val);
         TodoList.map(item => {
             if (item.id === val.id) {
                 item.name = val.name;
@@ -98,7 +100,6 @@ export class TodoService {
     deleteItem(id: string) {
         TodoList.forEach((item, index) => {
             if (id === item.id) {
-                // console.log('ID', item.id);
                 TodoList.splice(index, 1);
             }
         });

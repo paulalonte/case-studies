@@ -1,1 +1,35 @@
 <app-page-header [pageHeader]="pageHeader"></app-page-header>
+
+<div class="page-container" *ngIf="userList.length">
+    <p>Select Task</p>
+    <select (ngModelChange)="onTodoChange($event)" [(ngModel)]="selectedTodoModel">
+        <option *ngFor="let todo of todoList" [ngValue]="todo">{{todo.name}}</option>
+    </select>
+
+    <p>Select User</p>
+    <select (ngModelChange)="onUserChange($event)" [(ngModel)]="selectedUserModel">
+        <option *ngFor="let user of userList" [ngValue]="user">{{user.firstname}}</option>
+    </select>
+
+    <div>
+        <button type="button" class="button-primary" (click)="onSubmitAssignment()">Submit</button>
+    </div>
+    
+</div>
+
+<div>
+    <ul>
+        <li>Task</li>
+        <li>Name</li>
+        <li>Completed</li>
+        <li>Action</li>
+    </ul>
+    <ul *ngFor="let assignment of assignmentList">
+        <li>{{assignment.task.name}}</li>
+        <li>{{assignment.user.firstname}}</li>
+        <li>{{assignment.isComplete}}</li>
+        <li>
+            <button type="button" class="button-secondary" (click)="onDeleteAssignment()">Delete</button>
+        </li>
+    </ul>
+</div>

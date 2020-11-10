@@ -1,6 +1,6 @@
 import { IUser } from './user';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UsersList } from './users-mock-data';
 import { convertToCapital } from '../utilities/utils';
 
@@ -10,10 +10,14 @@ import { convertToCapital } from '../utilities/utils';
 
 export class UserService {
 
-    private userSubject$ = new Subject<IUser[]>();
+    private userSubject$ = new BehaviorSubject<IUser[]>(UsersList);
     private idGenerator = 0;
 
-    public userList$ = this.userSubject$.asObservable();
+    // public userList$ = this.userSubject$.asObservable();
+
+    getUserListSubject$(): Observable<IUser[]> {
+        return this.userSubject$.asObservable();
+    }
 
     addItem(val: any) {
         const capitalizeFname = convertToCapital(val.firstname);
@@ -37,4 +41,4 @@ export class UserService {
             }
         });
     }
-};
+}

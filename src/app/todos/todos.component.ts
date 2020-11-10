@@ -36,11 +36,9 @@ export class TodosComponent implements OnInit, OnDestroy {
     this.todoSubscription = this.todoService.getTodoListSubject$().subscribe(data => {
       this.todoList = data;
       this.setResultMessage();
-      // console.log(this.todoList);
 
       const totalFiltered = this.todoList.filter(item => item.isComplete);
       if (this.todoList.length) {
-        console.log('there is laman');
         if (totalFiltered.length === this.todoList.length) {
           this.isCheckAll = true;
           this.checkAllText = 'Uncheck All';
@@ -115,8 +113,6 @@ export class TodosComponent implements OnInit, OnDestroy {
   onEditTodo(todo: ITodo) {
     this.currentEditItem = todo;
 
-    console.log('edit');
-
     if (!this.isEditMode) {
       this.todoList.map(item => {
         if (item.id === this.currentEditItem.id) {
@@ -126,14 +122,12 @@ export class TodosComponent implements OnInit, OnDestroy {
     } else {
       this.currentEditItem.name = this.currentEditedName;
       this.todoService.editTodo(this.currentEditItem);
-      // console.log("SUBMIT NA", todo.name);
     }
 
     this.isEditMode = !this.isEditMode;
   }
 
   onInputTodoChange(val: string): void {
-    console.log('on change', val);
     this.currentEditedName = val;
   }
 
@@ -146,7 +140,6 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   onCheckAllTodos(): void {
-    console.log('check all');
     if (!this.isCheckAll) {
       this.todoService.completeAll();
       this.checkAllText = 'Uncheck All';
@@ -160,7 +153,6 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todoList, event.previousIndex, event.currentIndex);
-    // console.log(this.movies);
   }
 
   ngOnDestroy(): void {

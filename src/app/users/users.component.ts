@@ -1,10 +1,8 @@
 import { UserService } from './users.service';
 import { ModalService } from './../shared/modal/modal.service';
-import { UsersList } from './users-mock-data';
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from './user';
-import { convertToCapital } from './../utilities/utils';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -42,8 +40,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.userService.userList$.subscribe(data => {
-      console.log(data);
+    this.userService.getUserListSubject$().subscribe(data => {
       this.usersList = data;
     });
   }
